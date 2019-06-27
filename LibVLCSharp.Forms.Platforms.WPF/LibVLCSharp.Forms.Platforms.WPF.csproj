@@ -8,7 +8,9 @@ LibVLCSharp.Forms.WPF contains the Xamarin.Forms support for LibVLCSharp through
 
 Xamarin.Forms support for other platforms are in different packages (namely LibVLCSharp.Forms and LibVLCSharp.Forms.GTK). LibVLC needs to be installed separately, see VideoLAN.LibVLC.* packages.
     </Description>   
-    <TargetFramework>net47</TargetFramework>
+    <TargetFrameworks>net47;netcoreapp3.0</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
     <RootNamespace>LibVLCSharp.Forms.Platforms.WPF</RootNamespace>
     <Version>3.0.3</Version>
     <PackageId>LibVLCSharp.Forms.WPF</PackageId>
@@ -29,7 +31,7 @@ Xamarin.Forms support for other platforms are in different packages (namely LibV
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net47' ">
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -41,6 +43,9 @@ Xamarin.Forms support for other platforms are in different packages (namely LibV
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LibVLCSharp.Forms\LibVLCSharp.Forms.csproj" />
     <ProjectReference Include="..\LibVLCSharp.WPF\LibVLCSharp.WPF.csproj" />
     <ProjectReference Include="..\LibVLCSharp\LibVLCSharp.csproj" />
